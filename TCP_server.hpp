@@ -139,7 +139,7 @@ public:
 		}
 	}
 
-	void _accept(char* (*handle_input)(char* input), bool* run)
+	void _accept(char* (*handle_input)(char*), bool* run, bool free_after)
 	{
 		if (ready[2])
 		{
@@ -167,7 +167,7 @@ public:
 						recvbuff[recvbuflen - 1] = '\0';
 
 						i_send_result = send(c_socket, tmp, i_result, 0);
-						free(tmp);
+						if (free_after) free(tmp);
 						if (i_send_result == SOCKET_ERROR) std::cout << "[TCP_server:error] Failed to respond.\n";
 					}
 					else if (i_result == 0) std::cout << "[TCP_server:notification] Connection closed.\n";
