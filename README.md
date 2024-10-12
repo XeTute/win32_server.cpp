@@ -16,8 +16,7 @@ This should compile without any errors, and you should be able to see a new used
 
 char* function(char* i)
 {
-	char* o = i;
-	return o;
+	return i;
 }
 
 int main()
@@ -29,7 +28,7 @@ int main()
 
 	_socket.init(4301);
 	_socket._listen();
-	_socket._accept(function, run);
+	_socket._accept(function, run, false);
 	_socket.kill();
 
 	return 0;
