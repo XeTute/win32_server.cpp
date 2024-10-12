@@ -32,7 +32,7 @@ int main()
 ```
 
 # License
-The code found in this repo is licensed under the MIT license, but a note (something like "Built with win32_server.cpp by XeTute" is always appreciated =)
+The code found in this repo is licensed under the MIT license, but a note (something like "Built with win32_server.cpp by XeTute") is always appreciated =)
 
 # Star History
 [![Star History Chart](https://api.star-history.com/svg?repos=XeTute/win32_server.cpp&type=Date)](https://star-history.com/#XeTute/win32_server.cpp&Date)
