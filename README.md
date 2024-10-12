@@ -7,7 +7,7 @@ To create a server, you only need a free port number and a function which handle
 
 # Example code
 This should compile without any errors, and you should be able to see a new used port on your system:
-```cpp
+`cpp
 #include <malloc.h>
 
 #include "TCP_server.hpp"
@@ -31,7 +31,7 @@ int main()
 	_socket.kill();
 
 	return 0;
-}```
+}`
 
 # License
 The code found in this repo is licensed under the MIT license, but a note (something like "Built with win32_server.cpp by XeTute" is always appreciated =)
