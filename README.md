@@ -10,7 +10,7 @@ To create a server, you only need a free port number and a function which handle
 # Example code
 This should compile without any errors, and you should be able to see a new used port on your system:
 ```cpp
-#include "TCP_server.hpp"
+#include "win32_server.hpp"
 
 char* function(char* i)
 {
