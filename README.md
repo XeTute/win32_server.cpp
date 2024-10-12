@@ -1,5 +1,7 @@
+> win32_server.cpp is still new, and it may have some small bugs which we may did not expirience while testing. Please test your application before publishing.
+
 # win32_server.cpp
-A simple, single-threaded TCP server for systems running Windows. May become multi-threaded in the future.
+A simple, efficient and single-threaded TCP server for systems running Windows. May become multi-threaded in the future.
 
 # Understanding the library
 win32_server.cpp is a headers-only library for Windows system.<br>
@@ -36,3 +38,6 @@ int main()
 
 # License
 The code found in this repo is licensed under the MIT license, but a note (something like "Built with win32_server.cpp by XeTute" is always appreciated =)
+
+# Star History
+[![Star History Chart](https://api.star-history.com/svg?repos=XeTute/win32_server.cpp&type=Date)](https://star-history.com/#XeTute/win32_server.cpp&Date)
