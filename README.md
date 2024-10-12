@@ -4,8 +4,7 @@
 A simple, efficient and single-threaded TCP server for systems running Windows. May become multi-threaded in the future.
 
 # Understanding the library
-win32_server.cpp is a headers-only library for Windows system.<br>
-To create a server, you only need a free port number and a function which handles the input(char* function(char* input)).
+You can read our short doc / tutorial [here](https://github.com/XeTute/win32_server.cpp/wiki).
 
 # Example code
 This should compile without any errors, and you should be able to see a new used port on your system:
