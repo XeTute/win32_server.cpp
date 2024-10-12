@@ -143,42 +143,42 @@ public:
 	{
 		if (ready[2])
 		{
-			c_socket = accept(l_socket, NULL, NULL);
-
-			if (c_socket == INVALID_SOCKET)
+			do
 			{
-				freeaddrinfo(result);
-				closesocket(l_socket);
-				WSACleanup();
-				throw std::runtime_error(("[TCP_server:error] Failed to accept with error " + std::to_string(WSAGetLastError())).c_str());
-			}
+				c_socket = accept(l_socket, NULL, NULL);
 
-			while (run)
-			{
-				do
+				if (c_socket == INVALID_SOCKET)
 				{
-					i_result = recv(c_socket, recvbuff, recvbuflen, 0);
-					if (i_result > 0)
-					{
-						std::cout << "Received successfully.\n";
+					freeaddrinfo(result);
+					closesocket(l_socket);
+					WSACleanup();
+					throw std::runtime_error(("[TCP_server:error] Failed to accept with error " + std::to_string(WSAGetLastError())).c_str());
+				}
 
-						char* tmp = handle_input(recvbuff);
-						for (std::uint64_t i = 0; i < recvbuflen; ++i) recvbuff[i] = tmp[i];
-						recvbuff[recvbuflen - 1] = '\0';
+				i_result = 1;
+				i_result = recv(c_socket, recvbuff, recvbuflen, 0);
+				if (i_result > 0)
+				{
+					std::cout << "[TCP_server:notification] Received successfully.\n";
 
-						i_send_result = send(c_socket, tmp, i_result, 0);
-						if (free_after) free(tmp);
-						if (i_send_result == SOCKET_ERROR) std::cout << "[TCP_server:error] Failed to respond.\n";
-					}
-					else if (i_result == 0) std::cout << "[TCP_server:notification] Connection closed.\n";
-					else
-					{
-						std::cout << "[TCP_server:error] recv failed with error " << WSAGetLastError() << '\n';
-						closesocket(c_socket);
-						WSACleanup();
-					}
-				} while (i_result > 0);
-			}
+					char* tmp = handle_input(recvbuff);
+					for (std::uint64_t i = 0; i < recvbuflen; ++i) recvbuff[i] = tmp[i];
+					recvbuff[recvbuflen - 1] = '\0';
+
+					i_send_result = send(c_socket, tmp, i_result, 0);
+					std::cout << "[TCP_server:notification] Sent successfully.\n";
+
+
+					if (free_after) free(tmp);
+					if (i_send_result == SOCKET_ERROR) std::cout << "[TCP_server:error] Failed to respond.\n";
+				}
+				else if (i_result < 0)
+				{
+					std::cout << "[TCP_server:error] recv failed with error " << WSAGetLastError() << '\n';
+					closesocket(c_socket);
+					WSACleanup();
+				}
+			} while (i_result > 0 || *run);
 		}
 	}
 
