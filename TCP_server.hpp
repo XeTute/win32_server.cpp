@@ -167,6 +167,7 @@ public:
 						recvbuff[recvbuflen - 1] = '\0';
 
 						i_send_result = send(c_socket, tmp, i_result, 0);
+						free(tmp);
 						if (i_send_result == SOCKET_ERROR) std::cout << "[TCP_server:error] Failed to respond.\n";
 					}
 					else if (i_result == 0) std::cout << "[TCP_server:notification] Connection closed.\n";
