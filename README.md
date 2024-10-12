@@ -10,8 +10,6 @@ To create a server, you only need a free port number and a function which handle
 # Example code
 This should compile without any errors, and you should be able to see a new used port on your system:
 ```cpp
-#include <malloc.h>
-
 #include "TCP_server.hpp"
 
 char* function(char* i)
@@ -23,12 +21,11 @@ int main()
 {
 	TCP_server _socket;
 
-	bool* run = (bool*)malloc(sizeof(bool));
-	*run = true;
+	bool run = true;
 
 	_socket.init(4301);
 	_socket._listen();
-	_socket._accept(function, run, false);
+	_socket._accept(function, &run, false);
 	_socket.kill();
 
 	return 0;
