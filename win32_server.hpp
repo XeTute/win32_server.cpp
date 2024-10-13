@@ -162,12 +162,8 @@ public:
 					std::cout << "[TCP_server:notification] Received successfully.\n";
 
 					char* tmp = handle_input(recvbuff);
-					for (std::uint64_t i = 0; i < recvbuflen; ++i) recvbuff[i] = tmp[i];
-					recvbuff[recvbuflen - 1] = '\0';
-
 					i_send_result = send(c_socket, tmp, i_result, 0);
 					std::cout << "[TCP_server:notification] Sent successfully.\n";
-
 
 					if (free_after) free(tmp);
 					if (i_send_result == SOCKET_ERROR) std::cout << "[TCP_server:error] Failed to respond.\n";
