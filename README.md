@@ -11,11 +11,7 @@ This should compile without any errors, and you should be able to see a new used
 ```cpp
 #include "win32_server.hpp"
 
-char* function(char* i)
-{
-	return i;
-}
-
+std::string function(std::string i) { return i; }
 int main()
 {
 	TCP_server _socket;
@@ -24,7 +20,7 @@ int main()
 
 	_socket.init(4301);
 	_socket._listen();
-	_socket._accept(function, &run, false);
+	_socket._accept(function, &run);
 	_socket.kill();
 
 	return 0;
