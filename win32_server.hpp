@@ -139,7 +139,7 @@ public:
 		}
 	}
 
-	void _accept(char* (*handle_input)(char*), bool* run, bool free_after)
+	void _accept(std::string (*handle_input)(std::string), bool* run)
 	{
 		if (ready[2])
 		{
@@ -161,11 +161,10 @@ public:
 				{
 					std::cout << "[TCP_server:notification] Received successfully.\n";
 
-					char* tmp = handle_input(recvbuff);
-					i_send_result = send(c_socket, tmp, i_result, 0);
+					std::string str = handle_input(std::string(recvbuff));
+					i_send_result = send(c_socket, str.c_str(), str.size(), 0);
 					std::cout << "[TCP_server:notification] Sent successfully.\n";
 
-					if (free_after) free(tmp);
 					if (i_send_result == SOCKET_ERROR) std::cout << "[TCP_server:error] Failed to respond.\n";
 				}
 				else if (i_result < 0)
