@@ -1,7 +1,7 @@
 > win32_server.cpp is still new, and it may have some small bugs which we may did not expirience while testing. Please test your application before publishing and issue bugs when they happen.
 
 # win32_server.cpp
-A simple, efficient and 🤞 single-threaded TCP server for systems running Windows. May become 🙌 multi-threaded in the future.
+A simple, efficient and 🤞 single-threaded TCP server for systems running Windows(planning to add Linux support soon). May become 🙌 multi-threaded in the future.
 
 # Understanding the library
 You can read our 📖 short doc / tutorial [here](https://github.com/XeTute/win32_server.cpp/wiki).
